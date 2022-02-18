@@ -1,6 +1,6 @@
 //import React from "react";
 import React, { useEffect, useState, setState } from 'react';
-import { View, ActivityIndicator, RefreshControl, StyleSheet, Text, SafeAreaView, Button, FlatList} from 'react-native';
+import { View, ActivityIndicator, RefreshControl, StyleSheet, Text, SafeAreaView, Button, FlatList, TouchableOpacity } from 'react-native';
 //import Constants from 'expo-constants';
 import * as WebBrowser from 'expo-web-browser';
 import {
@@ -53,10 +53,10 @@ export default function App() {
             console.log("item", item)
             return ( 
             
-                <Button onPress = {() => WebBrowser.openBrowserAsync(item.video)}>
+                <TouchableOpacity onPress = {() => WebBrowser.openBrowserAsync(item.video)}>
                
               <Text style={{ flex: 1,  backgroundColor: '#FAD607',
-                borderRadius: 30,
+                //borderRadius: 20,
                 padding: 8,
                 marginVertical: 5,
                 marginHorizontal: 8,
@@ -64,7 +64,7 @@ export default function App() {
                 }}>{item.name}
                 </Text>
               
-              </Button> 
+              </TouchableOpacity> 
            
             )
           }}
@@ -103,6 +103,15 @@ const styles = StyleSheet.create({
     //fontWeight: "bold",
     color: "#000",
 
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 20,
+    elevation: 3,
+    backgroundColor: 'black',
   },
 });
 

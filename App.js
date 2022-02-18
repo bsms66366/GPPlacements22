@@ -6,6 +6,9 @@ import { Card } from 'react-native-paper';
 import { DefaultTheme } from 'react-native-paper';
 import LocationLog from "./components/LocationLog";
 import ScanQRScreen6 from "./components/ScanQRScreen6";
+import AttendanceProgress from "./components/AttendanceProgress";
+import VideoCSScreen4 from "./components/VideoCSScreen4";
+
 
 const AuthContext = React.createContext();
 
@@ -33,6 +36,14 @@ function HomeScreen({ navigation}) {
 
 <TouchableOpacity onPress = {() => navigation.navigate('Barcode', { screen: 'ScanQRScreen6' }) }>
              <Image accessible={true} accessibilityLabel="Image" source={require('./assets/images/placement6.png')} style={{width: 250, height: 75, marginTop:20, marginLeft:55}} />
+</TouchableOpacity>
+
+<TouchableOpacity onPress = {() => navigation.navigate('Attendance', { screen: 'AttendanceProgress' }) }>
+             <Image accessible={true} accessibilityLabel="Image" source={require('./assets/images/placement5.png')} style={{width: 250, height: 75, marginTop:20, marginLeft:55}} />
+</TouchableOpacity>
+
+<TouchableOpacity onPress = {() => navigation.navigate('Video', { screen: 'VideoCSScreen4' }) }>
+             <Image accessible={true} accessibilityLabel="Image" source={require('./assets/images/placement2.png')} style={{width: 250, height: 75, marginTop:20, marginLeft:55}} />
 </TouchableOpacity>
   </View>
 
@@ -170,6 +181,8 @@ export default function App({ navigation }) {
           {/* <Stack.Screen name="LocationLog" component={LocationLog} /> */}
           <Stack.Screen name="Location" component={LocationLog} options={{ headerShown: true }} />
           <Stack.Screen name="Barcode" component={ScanQRScreen6} options={{ headerShown: true }} />
+          <Stack.Screen name="Attendance" component={AttendanceProgress} options={{ headerShown: true }} />
+          <Stack.Screen name="Video" component={VideoCSScreen4} options={{ headerShown: true }} />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContext.Provider>
