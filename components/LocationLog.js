@@ -175,7 +175,7 @@ const [locationServiceEnabled, setLocationServiceEnabled] = useState(true);
       {/* <Text style={styles.text}>{displayCurrentAddress}</Text> */}
 
 
-      <TextInput placeholder='Student Number' style={{marginTop: 30, fontSize: 18, color: '#fff', width: 200, borderColor: '#FAD607', borderWidth: 1}}
+      <TextInput placeholder='Student Number' placeholderTextColor="#FAD607" style={{marginTop: 30, fontSize: 18, color: '#fff', width: 200, borderColor: '#FAD607', borderWidth: 1}}
         onChangeText={(title) => setTitle(title)}
         value={title}/>  
      <TextInput placeholder='Postcode' style={{ marginTop: 5, marginBottom: 5,  fontSize:18, color: '#fff', width: 200, borderColor: '#FAD607', borderWidth: 1}}

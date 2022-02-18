@@ -9,6 +9,7 @@ import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import * as Print from 'expo-print';
 import * as Updates from 'expo-updates';
+import axios from 'axios';
 //import * as Sharing from 'expo-sharing';
 //import { Title } from 'native-base';
 //import { Updates } from 'expo';
@@ -34,9 +35,9 @@ const App = () => {
 
   //Database Input
   //const [surgery, setSurgery] = useState({barcode:" " });
-  const [surgery, setSurgery] = useState(``);
-  //const [title, setTitle] = useState(``);
-  const [placement, setPlacement] = useState([]);
+  const [surgery, setSurgery] = useState('');
+  const [title, setTitle] = useState('');
+  //const [placement, setPlacement] = useState([]);
 
 
   useEffect(() => {
@@ -50,12 +51,25 @@ const App = () => {
   // Save course
   const saveItem = () => {
     db.transaction(tx => {
-        console.log("PostalCode ="  + barcode)
+        console.log("Barcode ="  + barcode)
          tx.executeSql('DROP TABLE IF EXISTS placement', []);
         tx.executeSql('insert into placements (surgery) values (?);', [barcode]);    
       }, null, updateList
     )
+    console.log("works")
+  
+ axios.post(
+  'http://192.168.1.59:8000/api/placement',{ surgery:barcode}
+  //'http://192.168.1.59:19000/api/placement',{ surgery:displayCurrentAddress, name:title}
+  //'http://127.0.0.1:19000/api/placement',{ surgery:displayCurrentAddress, name:title}
+  //'http://127.0.0.1:8000/api/placement',{ surgery:displayCurrentAddress, name:title}
+
+)
+.then(data => console.log(data))
+  .catch(data => console.log(data))
   }
+ 
+ 
 
   // Update courselist
   const updateList = () => {
@@ -120,9 +134,14 @@ useEffect(() => {
         editable={false}
       />
     </View>
-    
+      
     </View>
-
+<TextInput placeholder='Student ID' placeholderTextColor="#FAD607" style={{marginTop: 30, fontSize: 18, color: '#fff', width: 200, borderColor: '#FAD607', borderWidth: 1}}
+        onChangeText={(title) => setTitle(title)}
+        value={title}
+        editable={true}  
+        />
+        
     <View style={styles.SaveButton}>
     
 {/* <Button onPress={saveItem} title="Save"  />   */}
