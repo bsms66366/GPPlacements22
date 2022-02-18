@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Card } from 'react-native-paper';
 import { DefaultTheme } from 'react-native-paper';
 import LocationLog from "./components/LocationLog";
-import ScanQRScreen5 from "./components/ScanQRScreen5";
+import ScanQRScreen6 from "./components/ScanQRScreen6";
 
 const AuthContext = React.createContext();
 
@@ -31,7 +31,7 @@ function HomeScreen({ navigation}) {
              <Image accessible={true} accessibilityLabel="Image" source={require('./assets/images/placement3.png')} style={{width: 250, height: 75, marginTop:20, marginLeft:55}} />
 </TouchableOpacity>
 
-<TouchableOpacity onPress = {() => navigation.navigate('Barcode', { screen: 'ScanQRScreen5' }) }>
+<TouchableOpacity onPress = {() => navigation.navigate('Barcode', { screen: 'ScanQRScreen6' }) }>
              <Image accessible={true} accessibilityLabel="Image" source={require('./assets/images/placement6.png')} style={{width: 250, height: 75, marginTop:20, marginLeft:55}} />
 </TouchableOpacity>
   </View>
@@ -169,7 +169,7 @@ export default function App({ navigation }) {
           )}
           {/* <Stack.Screen name="LocationLog" component={LocationLog} /> */}
           <Stack.Screen name="Location" component={LocationLog} options={{ headerShown: true }} />
-          <Stack.Screen name="Barcode" component={ScanQRScreen7} options={{ headerShown: true }} />
+          <Stack.Screen name="Barcode" component={ScanQRScreen6} options={{ headerShown: true }} />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContext.Provider>
