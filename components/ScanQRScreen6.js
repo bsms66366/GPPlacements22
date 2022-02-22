@@ -17,7 +17,10 @@ import axios from 'axios';
 var {height, width} = Dimensions.get('window');
   console.log (height, width)
 
-const db = SQLite.openDatabase('placement.sqlite3');
+//const db = SQLite.openDatabase('placement.sqlite3');
+const db = SQLite.openDatabase('surgery.sqlite3');
+//const db = SQLite.openDatabase('locationdb.db');
+
 const App = () => {
     
   const [barcode, setBarcode] = useState('');
@@ -43,23 +46,24 @@ const App = () => {
   useEffect(() => {
     db.transaction(tx => {
       //tx.executeSql('DROP TABLE IF EXISTS placement', []);
-      tx.executeSql('create table if not exists placements (id integer primary key not null, surgery text, title text );');
+      tx.executeSql('DROP TABLE IF EXISTS locationdb', []);
+      tx.executeSql('create table if not exists surgery (id integer primary key not null, surgery text, title text );');
     });
     updateList();    
   }, []);
 
-  // Save course
+  // Save surgery
   const saveItem = () => {
     db.transaction(tx => {
-        console.log("Barcode ="  + barcode)
-         tx.executeSql('DROP TABLE IF EXISTS placement', []);
-        tx.executeSql('insert into placements (surgery) values (?);', [barcode]);    
+        console.log("Barcode ="  + barcode, "name =" + title)
+         //tx.executeSql('DROP TABLE IF EXISTS surgery', []);
+        tx.executeSql('insert into surgery (surgery, title) values (?,?);', [barcode,title]);    
       }, null, updateList
     )
     console.log("works")
   
  axios.post(
-  'http://192.168.1.59:8000/api/placement',{ surgery:barcode}
+  'http://192.168.1.59:8000/api/placement',{ surgery:barcode, name:title}
   //'http://192.168.1.59:19000/api/placement',{ surgery:displayCurrentAddress, name:title}
   //'http://127.0.0.1:19000/api/placement',{ surgery:displayCurrentAddress, name:title}
   //'http://127.0.0.1:8000/api/placement',{ surgery:displayCurrentAddress, name:title}
@@ -74,9 +78,9 @@ const App = () => {
   // Update courselist
   const updateList = () => {
     db.transaction(tx => {
-      tx.executeSql('select * from placements;', [], (_, { rows }) =>{
+      tx.executeSql('select * from surgery;', [], (_, { rows }) =>{
           //console.log(rows._array)
-        setPlacement(rows._array)}
+        setSurgery(rows._array)}
       ); 
     });
   }
@@ -85,7 +89,7 @@ const App = () => {
   const deleteItem = (id) => {
     db.transaction(
       tx => {
-        tx.executeSql(`delete from placements where id = ?;`, [id]);
+        tx.executeSql(`delete from surgery where id = ?;`, [id]);
       }, null, updateList
     )    
   }
@@ -93,30 +97,12 @@ const App = () => {
 
 const viewList = (id) => {
     db.transaction(tx => {
-      tx.executeSql('select * from placements;', [id], (_, { rows }) =>
-        setPlacement(rows._array)
+      tx.executeSql('select * from surgery;', [id], (_, { rows }) => {
+        return setSurgery(rows._array)
+      }
       ); 
     });
   }
-
-
-  //console.log ("database entry ="  + barcode.toString()) 
-
-/*   //render() { 
-     async function execute() {
-      const html =  `<h1> Surgery Barcode </h1>`+ JSON.stringify(placement);
-      const { uri } = await Print.printToFileAsync({ html });
-      Sharing.shareAsync(uri);
-    } 
-console.log ("PostalCode ="  + placement.toString()) 
-
-useEffect(() => {
-  fetch('http://127.0.0.1:8000/api/placement')
-    .then((response) => response.json())
-    .then((json) => setBarcode(json.surgery))
-    .catch((error) => console.error(error))
-    .finally(() => setLoading(false));
-}, []);*/
 
   return (
     <View style={styles.container}>
@@ -157,11 +143,11 @@ useEffect(() => {
       <FlatList 
         style={{marginLeft : "1%"}}
         keyExtractor={item => item.id.toString()} 
-        renderItem={({item}) => <View style={styles.listcontainer}><Text style={{fontSize: 18}}>{item.surgery}</Text>
+        renderItem={({item}) => <View style={styles.listcontainer}><Text style={{fontSize: 18}}>{item.surgery}, {item.title}</Text>
         <Text style={{fontSize: 18, color: '#0000ff'}} onPress={() => viewItem(item.id)}></Text>
         <Button title="Delete" onPress={() => deleteItem(item.id)} /> 
         </View>} 
-        data={placement} 
+        data={surgery} 
         //ItemSeparatorComponent={listSeparator} 
       /> 
      

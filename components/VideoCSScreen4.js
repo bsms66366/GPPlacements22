@@ -47,9 +47,9 @@ export default function App() {
     <View style={{ flex: 1, padding: 24, backgroundColor: '#005E7E', }}>
     <Text style={{ color: '#FFF', fontSize: 20, marginTop: 10, marginBottom:15, textAlign:"center"}}>CLINICAL SKILLS VIDEOS</Text>
       {isLoading ? <ActivityIndicator /> : (
-        <FlatList
+        <FlatList 
           data={data}
-          renderItem={({ item }) => {
+          renderItem={({ item }) =>  {
             console.log("item", item)
             return ( 
             
@@ -113,6 +113,21 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: 'black',
   },
+  listcontainer: {
+    flexDirection: 'row',
+    backgroundColor: '#FAD607',
+    //borderColor: '#FAD607',
+    //paddingTop: 5,
+    borderRadius: 20,
+    padding: 15,
+    marginVertical: 5,
+    marginHorizontal: 8,
+    marginBottom: 15,
+    alignItems: 'center', 
+    fontWeight: 'bold',
+    fontFamily: 'Roboto-Regular',
+    fontSize: 18, 
+   },
 });
 
 }

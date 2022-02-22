@@ -16,7 +16,7 @@ export default function App() {
   const [postalCode, setPostalcode] = useState('');
   const [street, setStreet] = useState ('');
   const [title, setTitle] = useState('');
-  const [surgery, setsurgery] = useState([]);
+  const [surgery, setSurgery] = useState([]);
   //const [location, setLocation] = useState(null);
   //const [errorMsg, setErrorMsg] = useState(null);
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
@@ -59,7 +59,7 @@ export default function App() {
     db.transaction(tx => {
       tx.executeSql('select * from surgery;', [], (_, { rows }) => {
         //console.log(rows._array)
-        setsurgery(rows._array)}
+        setSurgery(rows._array)}
       ); 
     });
   }
@@ -78,7 +78,7 @@ const viewList = (id) => {
     db.transaction(tx => {
       tx.executeSql('select * from surgery;', [id], (_, { rows }) => {
       //console.log(rows._array)
-      return setsurgery(rows._array)
+      return setSurgery(rows._array)
     }
        
       ); 
@@ -175,7 +175,7 @@ const [locationServiceEnabled, setLocationServiceEnabled] = useState(true);
       {/* <Text style={styles.text}>{displayCurrentAddress}</Text> */}
 
 
-      <TextInput placeholder='Student Number' placeholderTextColor="#FAD607" style={{marginTop: 30, fontSize: 18, color: '#fff', width: 200, borderColor: '#FAD607', borderWidth: 1}}
+      <TextInput placeholder='Student ID' placeholderTextColor="#FAD607" style={{marginTop: 30, fontSize: 18, color: '#fff', width: 200, borderColor: '#FAD607', borderWidth: 1}}
         onChangeText={(title) => setTitle(title)}
         value={title}/>  
      <TextInput placeholder='Postcode' style={{ marginTop: 5, marginBottom: 5,  fontSize:18, color: '#fff', width: 200, borderColor: '#FAD607', borderWidth: 1}}
