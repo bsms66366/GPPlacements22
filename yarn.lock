@@ -1448,6 +1448,13 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
+"@react-native-community/datetimepicker@^3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-3.5.2.tgz#8e6feb30f2620e5abdf565d5fe74c0c04edcf6ae"
+  integrity sha512-TWRuAtr/DnrEcRewqvXMLea2oB+YF+SbtuYLHguALLxNJQLl/RFB7aTNZeF+OoH75zKFqtXECXV1/uxQUpA+sg==
+  dependencies:
+    invariant "^2.2.4"
+
 "@react-native-community/masked-view@*":
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.11.tgz#2f4c6e10bee0786abff4604e39a37ded6f3980ce"
@@ -2883,6 +2890,13 @@ expo-barcode-scanner@~11.1.2:
   dependencies:
     "@expo/config-plugins" "^4.0.2"
     expo-image-loader "~3.0.0"
+    expo-modules-core "~0.4.4"
+
+expo-clipboard@~2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/expo-clipboard/-/expo-clipboard-2.0.3.tgz#4f2b1f441a26c45e77e218506256ab0cebf58d62"
+  integrity sha512-fcv9rUFoKSMWknL4wJnln+DGnPQdYKYjILap58k9MPsywZ5Gp2PRI17oqMVyM9r/yIhsr5PKUsSGGIjvxUBYrA==
+  dependencies:
     expo-modules-core "~0.4.4"
 
 expo-constants@~12.1.2, expo-constants@~12.1.3:
@@ -5463,6 +5477,11 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-animate-loading-button@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-animate-loading-button/-/react-native-animate-loading-button-1.0.3.tgz#6425215f12aca464b8057ac62d9ea4a728375e98"
+  integrity sha512-jQhZxx/e9XalyXkuW6HVxKfoVUbHhbrrRMK9gIWgR3lSmVF113//4iJQ01y85A0DkqCpgLnzH3em28SeOVMc8g==
+
 react-native-chart-kit@^6.12.0:
   version "6.12.0"
   resolved "https://registry.yarnpkg.com/react-native-chart-kit/-/react-native-chart-kit-6.12.0.tgz#187a4987a668a85b7e93588c248ed2c33b3a06f6"
@@ -5545,6 +5564,11 @@ react-native-tab-view@^3.0.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-3.1.1.tgz#1f8d7a835ab4f5b1b1407ec8dddc1053b53fa3c6"
   integrity sha512-M5pRN6utQfytKWoKlKVzg5NbkYu308qNoW1khGTtEOTs1k14p2dHJ/BWOJoJYHKbPVUyZldbG9MFT7gUl4YHnw==
+
+react-native-timeline-flatlist@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/react-native-timeline-flatlist/-/react-native-timeline-flatlist-0.8.0.tgz#7965a1ccd52b72791ddc3a0c976fe34701fa1ed7"
+  integrity sha512-IVfCOxYx7Js84CaUJmtuxq2eyLvoQ1nRO5GG0mri14NH2NbMUwL9VhX19/yI8LpU2bnarlo7kjR6GLUP3DM/iQ==
 
 react-native-web@0.17.1:
   version "0.17.1"
