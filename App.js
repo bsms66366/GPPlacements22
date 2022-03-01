@@ -2,8 +2,8 @@ import * as React from 'react';
 import { ScrollView, StyleSheet, Button, Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Card } from 'react-native-paper';
-import { DefaultTheme } from 'react-native-paper';
+import { DefaultTheme, Card } from 'react-native-paper';
+import * as SecureStore from 'expo-secure-store';
 import LocationLog from "./components/LocationLog";
 import ScanQRScreen6 from "./components/ScanQRScreen6";
 //import AttendanceProgress from "./components/AttendanceProgress";
@@ -120,7 +120,7 @@ export default function App({ navigation }) {
 
       try {
         // Restore token stored in `SecureStore` or any other encrypted storage
-        // userToken = await SecureStore.getItemAsync('userToken');
+        userToken = await SecureStore.getItemAsync('userToken');
       } catch (e) {
         // Restoring token failed
       }
@@ -177,6 +177,8 @@ export default function App({ navigation }) {
               }}
             />
           ) : (
+//state.userToken == null ? (
+
             // User is signed in
             <Stack.Screen name="Home" component={HomeScreen} />
           )}
