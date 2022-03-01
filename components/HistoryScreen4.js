@@ -47,6 +47,7 @@ import axios from 'axios';
        <View style={styles.container}>
          <Timeline 
            style={styles.list}
+           timeStyle={{textAlign: 'center', backgroundColor:'#ff9797', color:'white', padding:5, borderRadius:15}}
            data={data}
            renderItem={({ item }) =>  {
             console.log("item", item) }
@@ -70,4 +71,9 @@ import axios from 'axios';
      flex: 1,
      marginTop:20,
    },
+   text:{
+    textAlign: 'center',
+    fontSize: 24,
+    marginTop: 20
+  }
  });
